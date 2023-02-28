@@ -13,7 +13,7 @@ def find_preferred_index(cd, f, m):
     idx = f.index(max(f))
     visited = 0
     while visited < n:
-        if f[idx] * m - cd[idx] > 0:
+        if f[idx] * m >= cd[idx]:
             return idx
         visited += 1
         idx = (idx + 1) % n
