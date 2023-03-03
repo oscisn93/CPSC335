@@ -1,7 +1,15 @@
-s1 = [['7:00', '8:30'], ['12:00', '13:00'], ['16:00', '18:00']]
+s1 = [
+    ['7:00', '8:30'], 
+    ['12:00', '13:00'], 
+    ['16:00', '18:00']
+]
 da1 = ['9:00', '19:00']
-s2 = [['9:00', '10:30'], ['12:20', '14:30'],
-      ['14:00', '15:00'], ['16:00', '17:00']]
+s2 = [
+    ['9:00', '10:30'], 
+    ['12:20', '14:30'],
+    ['14:00', '15:00'], 
+    ['16:00', '17:00']
+]
 da2 = ['9:00', '18:30']
 d = 30
 
@@ -54,9 +62,7 @@ def parse_ranges(schedule, active):
 # merge s1 into s2
 
 
-def merge_schedules(s1, s2, a1, a2):
-    start = max(a1[0], a2[0])
-    end = min(a1[1], a2[1])
+def merge_schedules(s1, s2):
     # start at the first index of s2
     # and only increment when the current value of s1 is higher
     i = 0
@@ -110,18 +116,35 @@ def merge_schedules(s1, s2, a1, a2):
     # in case s1 has items remaining
     if len(s1) > 0:
         s2.extend(s1)
-    # account for common availabilities not covered
-    if s2[0][0] > start:
-        s2[0][0] = start
-    if s2[-1][1] < end:
-        s2[-1][1] = end
     return s2
 
 # parse the output back to string/date format
 
 
-def parse_availabilties(s):
-    for t in s:
+def parse_availabilties(s, a1, a2):
+    # set boundaries based on latest start
+    # and earliest end
+    start = max(a1[0], a2[0])
+    end = min(a1[1], a2[1])
+    avails = []
+    # pop each unavailabilty and check if there is a
+    # timeslot of length d or longer between its
+    # beggining and the start
+    while len(s) > 0:
+        t = s.pop(0)
+        # if there is one append an availabilty
+        # ending at the current busy timeblock
+        if t[0] - start >= d:
+            avails.append([start, t[0]])
+       # set the start after the end of the next
+       # busy block
+        start = t[1]
+    # if an opening exists between the last scheduled
+    # busy timeblock and the end, add an availability
+    if end - start >= d:
+        avails.append([start, end])
+    # parse as strings
+    for t in avails:
         for i in range(2):
             m = int(t[i] % 60)
             h = int((t[i] - m) / 60)
@@ -130,12 +153,12 @@ def parse_availabilties(s):
             if h < 10:
                 h = f'0{h}'
             t[i] = f'{h}:{m}'
-    print(s)
+    print(avails)
+
 
 
 s1 = parse_ranges(s1, da1)
 s2 = parse_ranges(s2, da2)
+s3 = merge_schedules(s1, s2)
 
-s3 = merge_schedules(s1, s2, da1, da2)
-
-parse_availabilties(s3)
+parse_availabilties(s3, da1, da2)
