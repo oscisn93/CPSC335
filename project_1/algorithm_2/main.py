@@ -15,6 +15,8 @@ d = 30
 
 # replaces each range with an integer representing
 # the range as total minutes
+
+
 def parse_range(t_range):
     for idx in range(2):
         h, m = [int(i) for i in t_range[idx].split(':')]
@@ -24,6 +26,8 @@ def parse_range(t_range):
 # parses the schedule from strings to minutes
 # and throws out any unavalabilites
 # outside of the active schedule range
+
+
 def parse_ranges(schedule, active):
     # first parse the schedule
     for idx in range(len(schedule)):
@@ -93,7 +97,7 @@ def merge_schedules(s1, s2):
                 # the current s1 range. Otherwise we get an
                 # out of order insertion
                 if t[1] < s2[i+1][0]:
-                    s2.insert(i+1, t)
+                   s2.insert(i+1, t)
                 else:
                     # to prevent an out of order insertion
                     # insert the s1 range back in until it
@@ -150,6 +154,7 @@ def parse_availabilties(s, a1, a2):
                 h = f'0{h}'
             t[i] = f'{h}:{m}'
     print(avails)
+
 
 
 s1 = parse_ranges(s1, da1)
