@@ -11,3 +11,4 @@ array 2b = [‘fullerton’, ‘chino’, ‘fremont’, ‘fresno’]
 array 3a = [“torranceoaklandrialtomarcooxnardchinofresnoirvineclovissimiorange”]
 array 3b = [‘oxnard’, ‘irvine’, ‘orange’, ‘marco’]
 
+
