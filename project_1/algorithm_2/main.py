@@ -1,13 +1,13 @@
 s1 = [
-    ['7:00', '8:30'], 
-    ['12:00', '13:00'], 
+    ['7:00', '8:30'],
+    ['12:00', '13:00'],
     ['16:00', '18:00']
 ]
 da1 = ['9:00', '19:00']
 s2 = [
-    ['9:00', '10:30'], 
+    ['9:00', '10:30'],
     ['12:20', '14:30'],
-    ['14:00', '15:00'], 
+    ['14:00', '15:00'],
     ['16:00', '17:00']
 ]
 da2 = ['9:00', '18:30']
@@ -97,7 +97,7 @@ def merge_schedules(s1, s2):
                 # the current s1 range. Otherwise we get an
                 # out of order insertion
                 if t[1] < s2[i+1][0]:
-                   s2.insert(i+1, t)
+                    s2.insert(i+1, t)
                 else:
                     # to prevent an out of order insertion
                     # insert the s1 range back in until it
@@ -154,7 +154,6 @@ def parse_availabilties(s, a1, a2):
                 h = f'0{h}'
             t[i] = f'{h}:{m}'
     print(avails)
-
 
 
 s1 = parse_ranges(s1, da1)
