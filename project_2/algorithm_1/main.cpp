@@ -47,7 +47,7 @@ input_data parse() {
               end++;
             if (line[end] != ']') {
               int last_index = inputs.size() - 1;
-              std::string search_string = inputs[inputs.size() - 1];
+              std::string search_string = inputs[last_index];
               std::string pattern = line.substr(start, end - start);
               int position = substring_index(search_string, pattern);
               patterns[last_index][position] = pattern;
