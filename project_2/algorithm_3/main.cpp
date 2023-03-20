@@ -18,11 +18,11 @@ std::vector<std::vector<int>> input_parser() {
       std::vector<int> v;
       _2d_array.push_back(v);
     } else if (line.size() == 0) {
-      // set to false when the line is empty 
+      // set to false when the line is empty
       // so we can create a new empty array
       in_array = false;
     }
-    // parse the current array- we're just 
+    // parse the current array- we're just
     // reading in numbers until the line ends
     if (in_array) {
       int i = 0;
@@ -53,8 +53,6 @@ std::vector<std::vector<int>> input_parser() {
   return _2d_array;
 }
 
-
-
 static int partition(int i, int j, std::vector<int> &v) {
   // set the pivot to the leftmost element
   int pivot_element = v[i];
@@ -64,10 +62,10 @@ static int partition(int i, int j, std::vector<int> &v) {
     // advance backaeards past all elements larger than the pivot
     while (v[end] > pivot_element)
       end--;
-      // advance forward past all elements smaller than the pivot
+    // advance forward past all elements smaller than the pivot
     while (v[start] < pivot_element)
       start++;
-    // if there are still numbers in between, 
+    // if there are still numbers in between,
     // swap and repeat, until the subpartition is sorted
     if (start < end) {
       std::iter_swap(v.begin() + start, v.begin() + end);
