@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <cctype>
-#include <fstream>
 #include <iostream>
 #include <map>
 #include <vector>
@@ -18,15 +17,11 @@ int substring_index(std::string text, std::string pattern) {
   std::pair<std::vector<std::string>, std::vector<std::map<int, std::string>>>
 
 input_data parse() {
-  std::string line;
-  std::ifstream f;
   std::vector<std::string> inputs;
   std::vector<std::map<int, std::string>> patterns;
   bool is_pattern = false;
 
-  f.open("in2A.txt", std::ios::in);
-  if (f.is_open()) {
-    while (getline(f, line)) {
+  for (std::string line; std::getline(std::cin, line);) {
       if (line[0] == 'a') {
         int start = 0;
         int end;
@@ -60,10 +55,8 @@ input_data parse() {
           }
           is_pattern = false;
         }
-      }
     }
   }
-  f.close();
   return std::make_pair(inputs, patterns);
 }
 
