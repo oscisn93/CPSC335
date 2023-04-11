@@ -38,9 +38,9 @@ int soccer_exhaustive(vector<vector<char>> grid)
 {
     // variable declaration
     // r: type int - number of rows in grid
-    int r = 8;
+    int r = grid.size();
     // c: type int - number of columns in grid
-    int c = 9;
+    int c = grid[0].size();
     // len: type int - length of the path
     int len = r + c - 2;
     // counter: type int - number of valid paths in grid
