@@ -1,3 +1,6 @@
+// Oscar Cisneros and Kevin Ortiz
+// Algorithm 1: Soccer Opponent Avoidance - Exhaustive Search
+// CPSC 335 Tuesday 7:00 PM to 9:45 PM
 #include <iostream>
 #include <vector>
 #include <cmath>
