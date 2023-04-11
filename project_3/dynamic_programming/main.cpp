@@ -1,3 +1,6 @@
+// Oscar Cisneros and Kevin Ortiz
+// Algorithm 2: Soccer Opponent Avoidance - Dynamic Programming
+// CPSC 335 Tuesday 7:00 PM to 9:45 PM
 #include <iostream>
 #include <string>
 #include <vector>
