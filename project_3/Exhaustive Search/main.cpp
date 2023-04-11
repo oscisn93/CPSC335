@@ -5,6 +5,7 @@
 #include <vector>
 #include <cmath>
 #include <string>
+#include <chrono>
 
 using namespace std;
 // function prototype
@@ -25,9 +26,17 @@ int main()
                                {'.', '.', '.', '.', 'X', '.', '.', '.', '.'},
                                {'.', '.', 'X', '.', '.', '.', '.', '.', 'X'},
                                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}}};
+    // start: type high_resolution_clock::time_point - start time
+    auto start = std::chrono::high_resolution_clock::now();
     // result: type int - number of paths that reach the end of the grid
     int result = soccer_exhaustive(grid);
-    cout << "The number of different paths to cross the field: " << result << std::endl;
+    // stop: type high_resolution_clock::time_point - stop time
+    auto stop = std::chrono::high_resolution_clock::now();
+    // empirical_timing: type duration<double> - empirical timing
+    auto empirical_timing = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+    cout << "The number of different paths to cross the field: " << result << endl;
+    cout << "Empirical time: " << empirical_timing.count() << " microseconds" << endl;
     return 0;
 }
 // function definition
