@@ -1,13 +1,22 @@
 #!/bin/bash
 
-for i in 1
+echo "-----------------------------------------------------------------"
+echo "Algorithmic Efficieny Comparisons"
+echo "-----------------------------------------------------------------"
+echo "Using Dynamic Programming:"
+echo "-----------------------------------------------------------------"
+
+for i in 1 2 3 4
 do
-    echo "Algorithmic Efficieny Comparisons\n"
-    echo "\n-----------------------------------------------------------------\n"
-    echo "Using Dynamic Programming:\n"
     ./dynamic_programming/main < "./inputs/$i.in"
-    echo "\n-----------------------------------------------------------------\n"
-    echo "Using Exhaustive Search:\n"
-    ./Exhaustive\ Search/main
-    echo "\n-----------------------------------------------------------------\n"
+    echo "-----------------------------------------------------------------"
+done
+
+echo "Using Exhaustive Search:"
+echo "-----------------------------------------------------------------"
+
+for i in 1 2 3 4
+do
+    ./exhaustive_search/main < "./inputs/$i.in"
+    echo "----------------------------------------------------------------"
 done

@@ -13,19 +13,12 @@ using namespace std;
 // @param: grid - 2D vector of char
 // return: int - number of paths that reach the end of the grid
 int soccer_exhaustive(vector<vector<char>> grid);
+std::vector<std::vector<char>> parse();
+
 // main driver
 int main()
 {
-    // variable declaration
-    // grid: type 2D vector of char - soccer field
-    vector<vector<char>> grid{{{'.', '.', '.', '.', '.', '.', 'X', '.', 'X'},
-                               {'X', '.', '.', '.', '.', '.', '.', '.', '.'},
-                               {'.', '.', '.', 'X', '.', '.', '.', 'X', '.'},
-                               {'.', '.', 'X', '.', '.', '.', '.', 'X', '.'},
-                               {'.', 'X', '.', '.', '.', '.', 'X', '.', '.'},
-                               {'.', '.', '.', '.', 'X', '.', '.', '.', '.'},
-                               {'.', '.', 'X', '.', '.', '.', '.', '.', 'X'},
-                               {'.', '.', '.', '.', '.', '.', '.', '.', '.'}}};
+    auto grid = parse();
     // start: type high_resolution_clock::time_point - start time
     auto start = std::chrono::high_resolution_clock::now();
     // result: type int - number of paths that reach the end of the grid
@@ -94,4 +87,20 @@ int soccer_exhaustive(vector<vector<char>> grid)
         }
     }
     return counter;
+}
+// variable declaration
+// grid: type 2D vector of char - soccer field
+std::vector<std::vector<char>> parse()
+{
+    std::vector<std::vector<char>> grid;
+    for (std::string line; std::getline(std::cin, line);)
+    {
+        std::vector<char> row;
+        for (char c : line)
+        {
+            row.push_back(c);
+        }
+        grid.push_back(row);
+    }
+    return grid;
 }
