@@ -28,8 +28,8 @@ int main()
     // empirical_timing: type duration<double> - empirical timing
     auto empirical_timing = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
 
-    cout << "The number of different paths to cross the field: " << result << endl;
-    cout << "Empirical time: " << empirical_timing.count() << " microseconds" << endl;
+    cout << "Total paths: " << result << endl;
+    cout << "Empirical time: " << empirical_timing.count() << " us" << endl;
     return 0;
 }
 // function definition

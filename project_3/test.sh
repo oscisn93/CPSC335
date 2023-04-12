@@ -5,17 +5,17 @@ echo "-----------------------------------------------------------------"
 echo "Using Dynamic Programming:"
 echo "-----------------------------------------------------------------"
 
-for i in 1 2 3 4
+for i in `seq 6`
 do
-    ./dynamic_programming/main < "./inputs/$i.in"
+    ./dynamic < "$i.in"
     echo "-----------------------------------------------------------------"
 done
 
 echo "Using Exhaustive Search:"
 echo "-----------------------------------------------------------------"
 
-for i in 1 2 3 4
+for i in `seq 6`
 do
-    ./exhaustive_search/main < "./inputs/$i.in"
+    ./exhaustive < "$i.in"
     echo "----------------------------------------------------------------"
 done

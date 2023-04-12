@@ -93,6 +93,6 @@ int main(int argc, char const *argv[])
   auto t = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
   // print output to stdout
   std::cout << "Total paths: " << paths << "\n";
-  std::cout << "Empirical time: " << t.count() << " us.\n";
+  std::cout << "Empirical time: " << t.count() << " us\n";
   return 0;
 }
