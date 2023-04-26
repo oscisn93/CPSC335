@@ -53,7 +53,7 @@ int main()
     // print the first 20 terms of the sequence using fib_goldenratio_equation4
     p = 0;
     cout << "Printing the first 20 terms of the sequence using fib_goldenratio_equation4:" << endl;
-    for (int n = 1; n < 20; n++) {
+    for (int n = 1; n <= 20; n++) {
         double f = fib_goldenratio_equation4(p, n);
         cout << f << " ";
         p = n;
@@ -62,7 +62,7 @@ int main()
 
     // print the first 20 terms of the sequence using fib_goldenratio_equation5
     cout << "Printing the first 20 terms of the sequence using fib_goldenratio_equation5:" << endl;
-    for (int n = 1; n < 20; n++) {
+    for (int n = 1; n <= 20; n++) {
         double f = fib_goldenratio_equation5(n);
         cout << f << " ";
     }
@@ -71,7 +71,7 @@ int main()
     // Compare outputs from equations (4) and (5)
     p = 0;
     cout << "Comparison of outputs from equations (4) and (5):" << endl;
-    for (int n = 1; n < 20; n++) {
+    for (int n = 1; n <= 20; n++) {
         double f4 = fib_goldenratio_equation4(p, n);
         double f5 = fib_goldenratio_equation5(n);
         cout << "Term: " << n << " Equation 4: " << f4 << " | Equation 5: " << f5 << endl;
