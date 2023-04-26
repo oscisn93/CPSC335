@@ -47,8 +47,10 @@ int main()
     cout << endl;
 
     // print the nth term of the sequence using fp for fib_goldenratio_equation4
-    cout << "printing fn from fp:" << endl;
+    cout << "printing fn from fp from equation (4):" << endl;
     cout << fib_goldenratio_equation4(p, n) << endl << endl;
+    cout << "printing fn from equation (5):" << endl;
+    cout << fib_goldenratio_equation5(n) << endl << endl;
 
     // print the first 20 terms of the sequence using fib_goldenratio_equation4
     p = 0;
