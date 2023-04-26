@@ -29,15 +29,16 @@ double fib_goldenratio_equation5(int n);
 // main driver
 int main()
 {
-    int p, n;
+    int p, n = 0;
+    double fn, fnext = 0;
     // prompt user for input 'p', where p is a positive integer and non-floating point number
     do {
         cout << "Enter a positive integer value for p: ";
         cin >> p;
-        if (p < 1) {
+        if (p < 0) {
             cout << "Invalid input. Please enter a positive integer value for p." << endl;
         }
-    } while (p < 1);
+    } while (p < 0);
     cout << endl;
 
     // prompt user for input 'n'
@@ -45,26 +46,36 @@ int main()
     cin >> n;
     cout << endl;
 
+    // print the nth term of the sequence using fp for fib_goldenratio_equation4
+    cout << "printing fn from fp:" << endl;
+    cout << fib_goldenratio_equation4(p, n) << endl << endl;
+
     // print the first 20 terms of the sequence using fib_goldenratio_equation4
+    p = 0;
     cout << "Printing the first 20 terms of the sequence using fib_goldenratio_equation4:" << endl;
-    for (int i = 0; i < 20; i++) {
-        cout << fib_goldenratio_equation4(p, n) << " ";
+    for (int n = 1; n < 20; n++) {
+        double f = fib_goldenratio_equation4(p, n);
+        cout << f << " ";
+        p = n;
     }
     cout << endl << endl;
 
     // print the first 20 terms of the sequence using fib_goldenratio_equation5
-        cout << "Printing the first 20 terms of the sequence using fib_goldenratio_equation5:" << endl;
-    for (int i = 0; i < 20; i++) {
-        cout << fib_goldenratio_equation5(n) << " ";
+    cout << "Printing the first 20 terms of the sequence using fib_goldenratio_equation5:" << endl;
+    for (int n = 1; n < 20; n++) {
+        double f = fib_goldenratio_equation5(n);
+        cout << f << " ";
     }
     cout << endl << endl;
     
     // Compare outputs from equations (4) and (5)
+    p = 0;
     cout << "Comparison of outputs from equations (4) and (5):" << endl;
-    for (int i = 0; i < 20; i++) {
+    for (int n = 1; n < 20; n++) {
         double f4 = fib_goldenratio_equation4(p, n);
         double f5 = fib_goldenratio_equation5(n);
-        cout << "Term: " << i << " Equation 4: " << f4 << " | Equation 5: " << f5 << endl;
+        cout << "Term: " << n << " Equation 4: " << f4 << " | Equation 5: " << f5 << endl;
+        p = n;
     }
     cout << endl;
 
@@ -86,7 +97,7 @@ double fib_goldenratio_equation4(int p, int n) {
     // find Fp via formula Fn = [( 1 + sqrt(5) )^n - ( 1 - sqrt(5) )^n ] / ( 2^n * sqrt(5) )
     fp = ( pow((1 + sqrt(5)), p) - pow((1 - sqrt(5)), p)) / (pow(2, p) * sqrt(5));
     // find Fn via formula Fn = Fp * (1.61803)^(n-p)
-    fn = fp * pow(1.61803, (n - p));
+    fn = round(fp * pow(1.61803, (n - p)));
     return fn;
 }
 // function definition
@@ -96,6 +107,6 @@ double fib_goldenratio_equation5(int n) {
     double fnext = 0;
     // find Fn via formula Fn = (1.61803)^n / sqrt(5)
     fn = ( pow((1 + sqrt(5)), n) - pow((1 - sqrt(5)), n)) / (pow(2, n) * sqrt(5));
-    fnext = fn * (1.61803);
+    fnext = round(fn * (1.61803));
     return fnext;
 }
