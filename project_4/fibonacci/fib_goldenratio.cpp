@@ -5,6 +5,9 @@
 // CPSC 335 Tuesday 7:00 PM to 9:45 PM
 #include <iostream>
 #include <cmath>
+#include <optional>
+#include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -26,21 +29,51 @@ double fib_goldenratio_equation4(int p, int n);
 // @return double - the value of the preceding term of the sequence
 double fib_goldenratio_equation5(int n);
 
+// converts the user input to an optional that will be used in place of the value
+// if the user inputs anything other than an integer
+/** https://stackoverflow.com/questions/70736444/validating-stdcin-in-c-as-float/70736592#70736592 **/
+template <typename T>
+auto string_to(const string &s) {
+  // the desired type
+  T value;
+  // convert the string to a stream
+  istringstream ss(s);
+  // the value is injected into the stream and we test wether
+  // removing whitespace yields an eof flag
+  // if not the value was not an integer
+  return ((ss >> value) and (ss >> ws).eof())
+  // if value is a number and not a float return it
+  ? value
+  // otherwise return an empty optional of type int
+  : optional<T> {};
+}
+
+// ensure that p is a valid integer
+int validate_input_integer() {
+  int n;
+  do {
+    cout << "Enter a positive integer value for p: ";
+    string buffer;
+    getline(cin, buffer);
+    auto p = string_to<int>(buffer);
+    // because p is an optional, if the conversion to integer was not successful
+    // p will be a null pointer. we can also bounds check by dereferncing the pointer.
+    if (!p || (*p < 0)) {
+      // continue to prompt users until input is valid
+      cout << "Invalid input. Please enter a positive integer value for p." << endl;
+    } else {
+      // assign to return (stack) variable and return
+      n = *p;
+      return n;
+    }
+  } while (true);
+}
+
 // main driver
 int main()
 {
-    int p, n = 0;
-    double fn, fnext = 0;
-    // prompt user for input 'p', where p is a positive integer and non-floating point number
-    do {
-        cout << "Enter a positive integer value for p: ";
-        cin >> p;
-        if (p < 0) {
-            cout << "Invalid input. Please enter a positive integer value for p." << endl;
-        }
-    } while (p < 0);
-    cout << endl;
-
+    int p = validate_input_integer(), n = 0;
+    double fn, fnext = 0;    
     // prompt user for input 'n'
     cout << "Enter the nth term of the sequence: ";
     cin >> n;
