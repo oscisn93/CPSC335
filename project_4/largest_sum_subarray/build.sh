@@ -1,21 +1,12 @@
 #!/bin/bash
 
-#Clear any previously compiled files
-rm *.o
+rm main
 
-#echo "compile fib_exhaustive.cpp using g++ compiler standard 2017"
-#g++ -std=c++17 fib_exhaustive.cpp -o fib_exhaustive
+echo "Compile main.cpp using clang compiler"
+clang main.cpp -o main
 
-echo "compile fib_goldenratio.cpp using g++ compiler standard 2017"
-g++ -std=c++17 fib_goldenratio.cpp -o fib_goldenratio
+echo "Run the Largest Sum Array program:"
+./main
 
-#echo "Run the fib_exhaustive.cpp Program:"
-#./fib_exhaustive
+echo "Build process completed"
 
-echo "Run the fib_goldenratio.cpp Program:"
-./fib_goldenratio
-
-# For cleaner working directory, remove all .o files
-rm *.o
-
-echo "Script file terminated."
