@@ -37,17 +37,15 @@ std::pair<int, int> largest_sum_subarray(std::vector<int> &array) {
   int b, e;
   int max_sum = array[0];
   // iterate starting point from 0 to N-1
-  for (int i = 0; i < array.size() - 1; i++) {
+  for (int i = 0; i < array.size(); i++) {
+    // creates all subarrays starting a
     int sum = array[i];
     if (sum > max_sum) {
-      max_sum = sum;
-      b=i;
-      e=i+1;
-    }
-    // creates all subarrays starting a
-    // running sum from the first element
-    // & replaces max_sum if sum is greater
-    for (int j = 1; j < array.size(); j++) {
+        max_sum = sum;
+        b=i;
+        e=i+1;
+      }
+    for (int j = i + 1; j < array.size(); j++) {
       sum += array[j];
       if (sum > max_sum) {
         max_sum = sum;
